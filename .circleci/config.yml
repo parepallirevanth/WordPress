@@ -46,7 +46,7 @@ jobs:
               TAG=$CIRCLE_SHA1
               docker login -u revanthparepalli -p Reva@1998
               docker push revanthparepalli/wordpress-app:$TAG
-              az login  --username parepallirevanth@gmail.com -p Sumanth_12356
+              az login --service-principal -u $AZURE_USER -p $AZURE_PASSWORD --tenant $AZURE_TENANT
               # az webapp config appsettings set --name WordpressApp --resource-group CircleRG1 --settings WORDPRESS_DB_HOST=$MYSQL_HOST WORDPRESS_DB_USER=$MYSQL_USER_USER WORDPRESS_DB_PASSWORD=$MYSQL_USER_PASS
               az webapp config container set --name WordpressApp --resource-group CircleRG1 -c "revanthparepalli/wordpress-app:$TAG"
             fi
