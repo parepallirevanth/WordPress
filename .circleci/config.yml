@@ -47,5 +47,6 @@ jobs:
               docker login -u revanthparepalli -p Reva@1998
               docker push revanthparepalli/wordpress-app:$TAG
               az login --service-principal --username 44af504b-1750-4649-ac81-18d8ce442158 --password a1448427-efd5-4ff6-b157-3566f337f874 --tenant 17360a6f-9efa-4fba-b22d-26ab50796678
-              az webapp config container set --name WPApplication --resource-group CircleRG1 -c "revanthparepalli/wordpress-app:$TAG"
+              # az webapp config appsettings set --name WPApplication --resource-group appsvc_linux_centralus --settings WORDPRESS_DB_HOST=$MYSQL_HOST WORDPRESS_DB_USER=$MYSQL_USER_USER WORDPRESS_DB_PASSWORD=$MYSQL_USER_PASS
+              az webapp config container set --name WPApplication --resource-group appsvc_linux_centralus -c "revanthparepalli/wordpress-app:$TAG"
             fi
